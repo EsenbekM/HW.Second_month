@@ -4,8 +4,9 @@ curent_year = dt.datetime.now()
 curent_year = curent_year.year
 
 class Person:   
-    ''' Parent class person.  '''
+    ''' Parent class person. '''
     __total_person = 0
+
     def __init__(self, __name, __birth_year, **kwargs):        
         self.name = __name
         self.birth_year = __birth_year
@@ -13,18 +14,19 @@ class Person:
         self.language = kwargs.get("language")
 
         if __birth_year > curent_year:
-            raise TypeError ("Not correct!")
+            raise TypeError ("Write correct!")
     
     def is_abult(self):  # created metoth for check and get abult
         if curent_year - self.birth_year >= 18:
             return True
-        False
+        return False
 
     def get_age(self): # created metoth get age
         return curent_year - self.birth_year
 
-    def get_total_person(self): # created metoth for get total person
-        return Person.__total_person
+    @classmethod
+    def get_total_person(cls): # created metoth for get total person
+        return cls.__total_person
 
     def talk(self): # created metoth for print 'Hello world'
         print(f"{self.name} says Hello world!")
@@ -43,7 +45,7 @@ class Teacher(Person):
 
 # created Person's class objects 
 p1 = Person('Esen', 2003, language = 'KG')
-p2 = Person('Alex', 2000, Language = "RU")
+p2 = Person('Alex', 2000, language = "RU")
 p3 = Person('Beka', 2004)
 
 # created Teacher's class objects 
