@@ -7,38 +7,38 @@ class Person:
     ''' Parent class person. '''
     __total_person = 0
 
-    def __init__(self, __name, __birth_year, **kwargs):        
-        self.name = __name
-        self.birth_year = __birth_year
+    def __init__(self, name, birth_year, **kwargs):        
+        self.__name = name
+        self.__birth_year = birth_year
         Person.__total_person += 1
-        self.language = kwargs.get("language")
+        self.__language = kwargs.get("language")
 
         if __birth_year > curent_year:
             raise TypeError ("Write correct!")
     
     def is_abult(self):  # created metoth for check and get abult
-        if curent_year - self.birth_year >= 18:
+        if curent_year - self.__birth_year >= 18:
             return True
         return False
 
     def get_age(self): # created metoth get age
-        return curent_year - self.birth_year
+        return curent_year - self.__birth_year
 
     @classmethod
     def get_total_person(cls): # created metoth for get total person
         return cls.__total_person
 
     def talk(self): # created metoth for print 'Hello world'
-        print(f"{self.name} says Hello world!")
+        print(f"{self.__name} says Hello world!")
     
     def print_language(self): # created metoth for print person's language
-        print(f"{self.name}'s language: {self.language}")
+        print(f"{self.__name}'s language: {self.__language}")
 
 
 class Teacher(Person):
     ''' child class Teacher '''
     def talk(self): # created Polimorphism metoth
-        print(f"Greetings, {self.name} your teacher")
+        print(f"Greetings, {self.__name} your teacher")
     
     def teach(self): # created metod print for teachers
         print("Lesson started by Teacher")
